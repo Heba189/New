@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm-12 " *ngFor='let good of goods; index as i'>
+            <div class="card m-auto ">
+                <img [src]="good.photoUrl" class="card-img-top img-fluid"  alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{good.name | titlecase}}</h5>
+                  <p class="card-text bg-warning text-center p-1">{{good.price | currency}}</p>
+                  <button (click)="addToCard(i)" href="#" class="btn btn-info" *ngIf="add !== i">Add to Cart</button>
+
+                  <!--By Default add ="-1" that index never equal -1 -->
+                  <div *ngIf="add === i">
+                    <input type="number"  class="form-control" placeholder="Qty (Num)" #amount>
+                    <button class="btn btn-secondary my-1" (click)="buy(amount.value)">Buy</button>
+                  </div>
+
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

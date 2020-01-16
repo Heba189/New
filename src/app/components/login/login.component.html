@@ -1,0 +1,22 @@
+<div class="container">
+    <h2 class="text-center shadow p-3 mb-5 bg-white rounded">Login</h2>
+
+    <form #valf="ngForm" (ngSubmit)="login(valf)">
+
+      
+
+
+        <input ngModel  #email="ngModel" type="email" name="email" class="form-control mb-3" placeholder="Email" id="" required email>
+        <div class="alert text-danger" *ngIf="email.touched && email.errors?.required">Email is required</div>
+        <div class="alert text-danger" *ngIf="email.touched && email.errors?.email">your input does not match email format</div>
+
+        <input ngModel  type="password" #password="ngModel" name="password" class="form-control mb-3" placeholder="Password" id="" required minlength="6" >
+        <div class="alert text-danger" *ngIf="password.touched && password.errors?.required">Password is required</div>
+        <div class="alert text-danger" *ngIf="password.touched && password.errors?.minlength">password at least 6 character</div>
+
+
+        <button [disabled]="valf.invalid" class="btn btn-info">Create Account</button>
+    </form>
+    <div class="alert alert-danger my-2" *ngIf="errorMessage">This Account not found !! please sign-up..</div>
+</div>
+
